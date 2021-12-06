@@ -184,6 +184,8 @@ fallacies = [
 ]
 
 
+window = Tk() # initiliazing the window
+
 i = random.randint(0, 40) # random integer for picking the fallacy/example combo
 examples = json.loads(open('examples.json').read()) # opening the file
 
@@ -218,15 +220,18 @@ if answer == fallacies[i]: # convert answer to lowercase, and is your answer = t
 else:
     print("Correct answer: " + fallacies[i]) # prints correct answer 
 
+answer = StringVar()
+
+def submit():
+    name = answer.get()    
+    answer.set("")
+
+sub_btn=Button(window, text = 'Submit', command = submit)
 
 
-window = Tk() # initiliazing the window
 window.title('Name that Logical Fallacy!') # Title bar
 window.geometry("800x600") # Window size
 window.mainloop() # start the window
-
-
-
 
 
 wordbank = ["Appeal To Force Fallacy", "Genetic Fallacy", "Abusive Ad Hominem Fallacy", 
